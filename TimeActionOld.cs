@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SimpleSleep
 {
-    public enum TimeAction
+    public enum TimeActionOld
     {
         Shutdown,
         Hibernate

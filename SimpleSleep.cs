@@ -13,7 +13,7 @@ namespace SimpleSleep
         public const int DEFAULT_TIME_HOURS = 1;
         public const int DEFAULT_TIME_MINUTES = 0;
 
-        public TimeAction TimeActionChoose { get; set; }
+        public TimeActionOld TimeActionChoose { get; set; }
         public TimeType TimeTypeChoose { get; set; }
         public DateTime ExecuteAt { get; set; }
         public Boolean TimerStarted { get; set; }
@@ -23,7 +23,7 @@ namespace SimpleSleep
             TimeType timeTypeChoose = TimeType.Timer,
             int hours = SimpleSleep.DEFAULT_TIME_HOURS,
             int minutes = SimpleSleep.DEFAULT_TIME_MINUTES,
-            TimeAction timeActionChoose = TimeAction.Shutdown
+            TimeActionOld timeActionChoose = TimeActionOld.Shutdown
         ) {
             this.TimeTypeChoose = timeTypeChoose;
             this.SetTime(hours, minutes);
@@ -85,12 +85,12 @@ namespace SimpleSleep
 
         public void SetActionShutdown()
         {
-            this.TimeActionChoose = TimeAction.Shutdown;
+            this.TimeActionChoose = TimeActionOld.Shutdown;
         }
 
         public void SetActionHibernate()
         {
-            this.TimeActionChoose = TimeAction.Hibernate;
+            this.TimeActionChoose = TimeActionOld.Hibernate;
         }
 
         public async void Start()
@@ -110,10 +110,10 @@ namespace SimpleSleep
 
                 switch(this.TimeActionChoose)
                 {
-                    case TimeAction.Shutdown:
+                    case TimeActionOld.Shutdown:
                         this.ShutdownComputer();
                         break;
-                    case TimeAction.Hibernate:
+                    case TimeActionOld.Hibernate:
                         this.HibernateComputer();
                         break;
                 }
